@@ -1,15 +1,14 @@
 from app import db
 
-
 association = db.Table('association',
-            db.Column('author_id', db.Integer, db.ForeignKey('author.author_id')),
-            db.Column('book_id', db.Integer, db.ForeignKey('book.book_id'))
-                      )
+                       db.Column('author_id', db.Integer, db.ForeignKey('author.author_id')),
+                       db.Column('book_id', db.Integer, db.ForeignKey('book.book_id'))
+                       )
 
 rent = db.Table('rent',
-            db.Column('book_id', db.Integer, db.ForeignKey('book.book_id')),
-            db.Column('rental_id', db.Integer, db.ForeignKey('rental.rental_id'))
-                      )
+                db.Column('book_id', db.Integer, db.ForeignKey('book.book_id')),
+                db.Column('rental_id', db.Integer, db.ForeignKey('rental.rental_id'))
+                )
 
 
 class Author(db.Model):
@@ -36,5 +35,3 @@ class Rental(db.Model):
 
     def __str__(self):
         return f"<User {self.rented}>"
-
-
